@@ -20,9 +20,4 @@ C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core
 C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core\obj\Debug\Belatrix.Connect.Core.csproj.App.config
 C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core\obj\Debug\Belatrix.Connect.Core.dll
 C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core\obj\Debug\Belatrix.Connect.Core.pdb
-C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core\obj\Debug\Belatrix.Connect.Core.dll.mdb
-C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core\bin\Debug\Belatrix.Connect.Core.dll.mdb
-C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core\obj\Debug\Belatrix.Connect.Core.dll.mdb
-C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core\bin\Debug\Belatrix.Connect.Core.dll.mdb
-C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core\obj\Debug\Belatrix.Connect.Core.dll.mdb
-C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core\bin\Debug\Belatrix.Connect.Core.dll.mdb
+C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core\obj\Debug\Belatrix.Connect.Core.csprojResolveAssemblyReference.cache

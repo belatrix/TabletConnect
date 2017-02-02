@@ -1,0 +1,9 @@
+C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core.Test\bin\Debug\Belatrix.Connect.Core.Test.dll
+C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core.Test\bin\Debug\Belatrix.Connect.Core.Test.pdb
+C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core.Test\bin\Debug\Belatrix.Connect.Core.dll
+C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core.Test\bin\Debug\Newtonsoft.Json.dll
+C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core.Test\bin\Debug\Belatrix.Connect.Core.pdb
+C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core.Test\bin\Debug\Newtonsoft.Json.xml
+C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core.Test\obj\Debug\Belatrix.Connect.Core.Test.csprojResolveAssemblyReference.cache
+C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core.Test\obj\Debug\Belatrix.Connect.Core.Test.dll
+C:\Projects\BelatrixConnect\TabletConnect\Belatrix.Connect\Belatrix.Connect.Core.Test\obj\Debug\Belatrix.Connect.Core.Test.pdb

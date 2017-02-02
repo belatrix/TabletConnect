@@ -36,11 +36,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
+    <Compile Include="Dtos\AuthenticationResponse.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Keyword.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proxies\DataService.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\EmployeeService.cs" />
     <Compile Include="Star.cs" />
     <Compile Include="SubCategory.cs" />
   </ItemGroup>
