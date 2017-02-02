@@ -1,0 +1,7 @@
+﻿<Application
+    x:Class="Belatrix.Connect.Portable.Windows.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Belatrix.Connect.Portable.Windows">
+
+</Application>
