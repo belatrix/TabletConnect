@@ -22,14 +22,15 @@ namespace Belatrix.Connect.Core.Services
 			_token = token;
 		}
 
-		public static async Task<T> Get<T>(string queryString, string token) where T : class
+		public static async Task<T> Get<T>(string queryString, string token)
+            where T : class
 		{
 			var client = new HttpClient
 			{
 				BaseAddress = new Uri(BaseUri)
 			};
 
-			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", token);
+			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", token);
 
 			var response = await client.GetAsync(queryString);
 

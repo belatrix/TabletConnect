@@ -50,7 +50,9 @@ namespace Belatrix.Connect.Core
 		[JsonProperty("skype_id")]
 		public string SkypeId { get; set; }
 
-		[JsonProperty("total_score")]
+        public string Email { get; set; }
+
+        [JsonProperty("total_score")]
 		public string TotalScore { get; set; }
 
 		[JsonProperty("last_month_score")]
@@ -79,5 +81,13 @@ namespace Belatrix.Connect.Core
 		public int NumStars { get; set; }
 
 		public Location Location { get; set; }
-	}
+
+        [JsonProperty("is_base_profile_complete")]
+        public bool IsBaseProfileComplete { get; set; }
+
+        [JsonProperty("is_password_reset_required")]
+        public bool IsPasswordResetRequired { get; set; }
+
+
+    }
 }
