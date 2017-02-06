@@ -22,5 +22,10 @@ namespace Belatrix.Connect.Core.Dtos
 
 		[JsonProperty("is_base_profile_complete")]
 		public bool IsBaseProfileComplete { get; set; }
+
+		public bool IsValidUser
+		{
+			get { return Id != 0; }
+		}
 	}
 }
