@@ -1,45 +1,74 @@
-﻿using System.Reactive.Linq;
-using System.Threading.Tasks;
-using Belatrix.Connect.Core.Dtos;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
 using Belatrix.Connect.Core.Services;
-using Belatrix.Connect.Portable.Model;
-using ReactiveUI;
+using Prism.Commands;
+using Prism.Navigation;
+using Xamarin.Forms;
 
 namespace Belatrix.Connect.Portable.ViewModels
 {
-	public class LoginViewModel : ReactiveObject
+	public class LoginViewModel : ViewModelBase
 	{
-		private LoginModel _loginModel;
+		private readonly INavigationService _navigationService;
 
-		public LoginModel LoginModel
+		private string _username;
+		public string Username
 		{
-			get { return _loginModel; }
-			set { this.RaiseAndSetIfChanged(ref _loginModel, value); }
+			get { return _username; }
+			set
+			{
+				SetProperty(ref _username, value);
+				RaiseCanExecuteChanged(ExecuteLoginCommand as DelegateCommand);
+			}
 		}
 
-		public ReactiveCommand<LoginModel, AuthenticationResponse> ExecuteLogin { get; protected set; }
-
-		ObservableAsPropertyHelper<bool> _isExecutingLogin;
-		public bool SpinnerVisibility => _isExecutingLogin.Value;
+		private string _password;
+		public string Password
+		{
+			get { return _password; }
+			set
+			{
+				SetProperty(ref _password, value);
+				RaiseCanExecuteChanged(ExecuteLoginCommand as DelegateCommand);
+			}
+		}
 
 		public LoginViewModel()
 		{
-			ExecuteLogin = ReactiveCommand.CreateFromTask<LoginModel, AuthenticationResponse>(Login);
-			this.WhenAnyValue(x => x.LoginModel)
-				.Where(x => x.IsValid)
-				.InvokeCommand(ExecuteLogin);
 		}
 
-		private async Task<AuthenticationResponse> Login(LoginModel model)
+		public LoginViewModel(INavigationService navigationService)
 		{
-			var result = await new EmployeeService().Authenticate(model.UserName, model.Password);
+			_navigationService = navigationService;
+		}
 
-			if (!result.IsValidUser)
+		private ICommand _executeLoginCommand;
+
+		public ICommand ExecuteLoginCommand => 
+			_executeLoginCommand ?? (_executeLoginCommand = new DelegateCommand(async () => { await Login(); }, CanExecuteLogin));
+
+		private bool CanExecuteLogin()
+		{
+			return !string.IsNullOrWhiteSpace(Username) && !string.IsNullOrWhiteSpace(Password);
+		}
+
+		private async Task Login()
+		{
+			var authenticationResponse = await new EmployeeService().Authenticate(Username, Password);
+
+			if (!authenticationResponse.IsValidUser)
 			{
 				//TODO: Show error to user
+				return;
 			}
 
-			return null;
+			if (!authenticationResponse.IsBaseProfileComplete)
+			{
+				//TODO: Navigate to employee edit profile
+				return;
+			}
+
+			//TODO: Navigate to main page
 		}
 	}
 }

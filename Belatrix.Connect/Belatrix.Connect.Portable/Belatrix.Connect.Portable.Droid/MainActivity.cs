@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Microsoft.Practices.Unity;
+using Prism.Unity;
 
 namespace Belatrix.Connect.Portable.Droid
 {
@@ -20,7 +22,15 @@ namespace Belatrix.Connect.Portable.Droid
 			base.OnCreate(bundle);
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
-			LoadApplication(new App());
+			LoadApplication(new App(new AndroidInitializer()));
+		}
+	}
+
+	public class AndroidInitializer : IPlatformInitializer
+	{
+		public void RegisterTypes(IUnityContainer container)
+		{
+
 		}
 	}
 }
