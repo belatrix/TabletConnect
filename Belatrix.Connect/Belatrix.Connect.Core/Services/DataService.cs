@@ -63,5 +63,10 @@ namespace Belatrix.Connect.Core.Services
 			var json = result.Content.ReadAsStringAsync().Result;
 			return JsonConvert.DeserializeObject<T>(json);
 		}
+
+		protected static string MakeUri(string baseUri, string parameter)
+		{
+			return $"{baseUri}{parameter}/";
+		}
 	}
 }

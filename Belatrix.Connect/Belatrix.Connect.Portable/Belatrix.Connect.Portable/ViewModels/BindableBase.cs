@@ -9,8 +9,15 @@ namespace Belatrix.Connect.Portable.ViewModels
 {
 	public class ViewModelBase : BindableBase, INavigationAware
 	{
+		private readonly INavigationService _navigationService;
+
 		public ViewModelBase()
 		{
+		}
+
+		public ViewModelBase(INavigationService navigationService)
+		{
+			_navigationService = navigationService;
 		}
 
 		protected void RaiseCanExecuteChanged(DelegateCommandBase command)

@@ -5,7 +5,7 @@ using Belatrix.Connect.Core.Dtos;
 
 namespace Belatrix.Connect.Core.Services
 {
-	public class EmployeeService : DataService
+	public class EmployeeService : DataService, IEmployeeService
 	{
 		private const string ApiUri = "/api/employee/";
 
@@ -13,9 +13,9 @@ namespace Belatrix.Connect.Core.Services
 		{
 		}
 
-		public EmployeeService(string token) : base(token)
-		{
-		}
+		//public EmployeeService(string token) : base(token)
+		//{
+		//}
 
 		public async Task<Employee> Get(int id)
 		{
@@ -24,14 +24,14 @@ namespace Belatrix.Connect.Core.Services
 				throw new UnauthorizedAccessException("You must login in order access this information.");
 			}
 
-			var results = await Get<Employee>(MakeUri(id.ToString()), _token);
+			var results = await Get<Employee>(MakeUri(ApiUri, id.ToString()), _token);
 
 			return results;
 		}
 
 		public async Task<AuthenticationResponse> Authenticate(string user, string password)
 		{
-			var results = await Post<AuthenticationResponse>(MakeUri("authenticate"),
+			var results = await Post<AuthenticationResponse>(MakeUri(ApiUri, "authenticate"),
 				new List<KeyValuePair<string, string>>()
 				{
 					new KeyValuePair<string, string>("username", user),
@@ -39,11 +39,6 @@ namespace Belatrix.Connect.Core.Services
 				});
 
 			return results;
-		}
-
-		private static string MakeUri(string parameter)
-		{
-			return $"{ApiUri}{parameter}/";
 		}
 
 		public void AddToken(string dataToken)

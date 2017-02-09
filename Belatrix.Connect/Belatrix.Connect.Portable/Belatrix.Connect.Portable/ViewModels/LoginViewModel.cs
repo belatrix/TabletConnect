@@ -1,15 +1,15 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
+using Belatrix.Connect.Core.Dtos;
 using Belatrix.Connect.Core.Services;
 using Prism.Commands;
 using Prism.Navigation;
-using Xamarin.Forms;
 
 namespace Belatrix.Connect.Portable.ViewModels
 {
 	public class LoginViewModel : ViewModelBase
 	{
-		private readonly INavigationService _navigationService;
+		private readonly IEmployeeService _employeeService;
 
 		private string _username;
 		public string Username
@@ -33,13 +33,9 @@ namespace Belatrix.Connect.Portable.ViewModels
 			}
 		}
 
-		public LoginViewModel()
+		public LoginViewModel(INavigationService navigationService, IEmployeeService employeeService) : base(navigationService)
 		{
-		}
-
-		public LoginViewModel(INavigationService navigationService)
-		{
-			_navigationService = navigationService;
+			_employeeService = employeeService;
 		}
 
 		private ICommand _executeLoginCommand;
@@ -54,8 +50,25 @@ namespace Belatrix.Connect.Portable.ViewModels
 
 		private async Task Login()
 		{
-			var authenticationResponse = await new EmployeeService().Authenticate(Username, Password);
+			await ProcessAuthenticationResponse(await _employeeService.Authenticate(Username, Password));
+		}
 
+		public override async void OnNavigatedTo(NavigationParameters parameters)
+		{
+			base.OnNavigatedTo(parameters);
+
+			var authenticationResponse = await App.Database.GetAuthenticationDataAsync();
+
+			if (authenticationResponse == null)
+			{
+				return;
+			}
+
+			await ProcessAuthenticationResponse(authenticationResponse);
+		}
+
+		private async Task ProcessAuthenticationResponse(AuthenticationResponse authenticationResponse)
+		{
 			if (!authenticationResponse.IsValidUser)
 			{
 				//TODO: Show error to user
@@ -68,7 +81,7 @@ namespace Belatrix.Connect.Portable.ViewModels
 				return;
 			}
 
-			//TODO: Navigate to main page
+			await App.Database.SaveAuthenticationResponse(authenticationResponse);
 		}
 	}
 }

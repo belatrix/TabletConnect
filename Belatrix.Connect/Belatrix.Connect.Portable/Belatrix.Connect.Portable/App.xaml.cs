@@ -1,22 +1,47 @@
-﻿using Belatrix.Connect.Portable.Views;
+﻿using Belatrix.Connect.Core.Services;
+using Belatrix.Connect.Portable.Interfaces;
+using Belatrix.Connect.Portable.Views;
+using Belatrix.Data;
+using Microsoft.Practices.Unity;
 using Prism.Unity;
+using Xamarin.Forms;
 
 namespace Belatrix.Connect.Portable
 {
 	public partial class App : PrismApplication
 	{
-		public App(IPlatformInitializer initializer = null) : base(initializer) { }
+		private static BelatrixConnectDatabase _database;
+		public static BelatrixConnectDatabase Database
+		{
+			get
+			{
+				if (_database != null)
+				{
+					return _database;
+				}
+
+				_database = new BelatrixConnectDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("BelatrixConnect.db3"));
+
+				return _database;
+			}
+		}
+
+		public App(IPlatformInitializer initializer = null) : base(initializer)
+		{
+			
+		}
 
 		protected override void OnInitialized()
 		{
 			InitializeComponent();
 
-			NavigationService.NavigateAsync("LoginView");
+			NavigationService.NavigateAsync(nameof(LoginView));
 		}
 
 		protected override void RegisterTypes()
 		{
 			Container.RegisterTypeForNavigation<LoginView>();
+			Container.RegisterType<IEmployeeService, EmployeeService>();
 		}
 	}
 }

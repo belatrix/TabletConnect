@@ -12,5 +12,4 @@
 			<Button Text="Log in" Command="{Binding ExecuteLoginCommand}"></Button>
 		</StackLayout>
 	</StackLayout>
-
 </ContentPage>
