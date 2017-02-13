@@ -3,13 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 						 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
 						 prism:ViewModelLocator.AutowireViewModel="True"
-						 x:Class="Belatrix.Connect.Portable.Views.LoginView">
-	<StackLayout Orientation="Vertical" BackgroundColor="White">
-		<Image Source="logo.png"></Image>
-		<StackLayout Orientation="Vertical">
-			<Entry Placeholder="User Name" Text="{Binding Username}"/>
-			<Entry Placeholder="Password" Text="{Binding Password}"/>
-			<Button Text="Log in" Command="{Binding ExecuteLoginCommand}"></Button>
+						 x:Class="Belatrix.Connect.Portable.Views.LoginView" BackgroundColor="{StaticResource ContentPageBackgroundColor}">
+	<StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" WidthRequest="300">
+		<Image Source="ic_belatrix.png"></Image>
+		<Label Text="Belatrix Connect" Style="{StaticResource BelatrixLabelStyle}"/>
+		<StackLayout Orientation="Horizontal" HeightRequest="40">
+			<Image Source="ic_user.png" Margin="7"/>
+			<Entry Placeholder="Username" Text="{Binding Username}" IsEnabled="{Binding IsEditEnabled}" HorizontalOptions="FillAndExpand"/>
 		</StackLayout>
+		<StackLayout Orientation="Horizontal" HeightRequest="40">
+			<Image Source="ic_lock.png" Margin="7"/>
+			<Entry Placeholder="Password" Text="{Binding Password}" IsEnabled="{Binding IsEditEnabled}" IsPassword="True" HorizontalOptions="FillAndExpand"/>
+		</StackLayout>
+		<Button Text="Log in" Command="{Binding ExecuteLoginCommand}" Style="{StaticResource PrimaryButtonStyle}"></Button>
+		<ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+		<Button Text="Forgot Password" Style="{StaticResource LinkButtonStyle}"/>
 	</StackLayout>
 </ContentPage>

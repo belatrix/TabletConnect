@@ -3,8 +3,9 @@ using Belatrix.Connect.Portable.Interfaces;
 using Belatrix.Connect.Portable.Views;
 using Belatrix.Data;
 using Microsoft.Practices.Unity;
+using Prism.Services;
 using Prism.Unity;
-using Xamarin.Forms;
+using DependencyService = Xamarin.Forms.DependencyService;
 
 namespace Belatrix.Connect.Portable
 {
@@ -41,6 +42,7 @@ namespace Belatrix.Connect.Portable
 		protected override void RegisterTypes()
 		{
 			Container.RegisterTypeForNavigation<LoginView>();
+			Container.RegisterType<IPageDialogService, PageDialogService>();
 			Container.RegisterType<IEmployeeService, EmployeeService>();
 		}
 	}

@@ -2,6 +2,34 @@
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                         xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+                        xmlns:portable="clr-namespace:Belatrix.Connect.Portable;assembly=Belatrix.Connect.Portable"
                         x:Class="Belatrix.Connect.Portable.App">
+	<prism:PrismApplication.Resources>
+		<ResourceDictionary>
+			<Color x:Key="ContentPageBackgroundColor">#ffffff</Color>
+			<Color x:Key="PrimaryButtonColor">#4D58A5</Color>
+			<Color x:Key="PrimaryButtonTextColor">#ffffff</Color>
+			<Color x:Key="BelatrixColor">#FF9933</Color>
+
+			<Style x:Key="BelatrixLabelStyle" TargetType="Label">
+				<Setter Property="TextColor" Value="{StaticResource BelatrixColor}"/>
+				<Setter Property="FontSize" Value="28"/>
+				<Setter Property="HorizontalOptions" Value="Center"/>
+			</Style>
+
+			<Style x:Key="PrimaryButtonStyle" TargetType="Button">
+				<Setter Property="BackgroundColor" Value="{StaticResource PrimaryButtonColor}"></Setter>
+				<Setter Property="TextColor" Value="{StaticResource PrimaryButtonTextColor}"></Setter>
+			</Style>
+			
+			<Style x:Key="LinkButtonStyle" TargetType="Button">
+				
+				<Setter Property="BackgroundColor" Value="{StaticResource ContentPageBackgroundColor}"/>
+				<Setter Property="TextColor" Value="{StaticResource BelatrixColor}"/>
+				<Setter Property="FontSize" Value="14"/>
+				
+			</Style>
+		</ResourceDictionary>
+	</prism:PrismApplication.Resources>
 
 </prism:PrismApplication>

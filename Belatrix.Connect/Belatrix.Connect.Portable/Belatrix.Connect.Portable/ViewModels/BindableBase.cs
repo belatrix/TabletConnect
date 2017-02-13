@@ -11,6 +11,17 @@ namespace Belatrix.Connect.Portable.ViewModels
 	{
 		private readonly INavigationService _navigationService;
 
+		private bool _isBusy;
+
+		public bool IsBusy
+		{
+			get { return _isBusy; }
+			set
+			{
+				SetProperty(ref _isBusy, value);
+			}
+		}
+
 		public ViewModelBase()
 		{
 		}
@@ -38,6 +49,16 @@ namespace Belatrix.Connect.Portable.ViewModels
 		public virtual void OnNavigatingTo(NavigationParameters parameters)
 		{
 			
+		}
+
+		protected virtual void SetBussy()
+		{
+			IsBusy = true;
+		}
+
+		protected virtual void SetBussyFinished()
+		{
+			IsBusy = false;
 		}
 	}
 }
